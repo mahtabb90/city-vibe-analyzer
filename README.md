@@ -1,276 +1,201 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-<a id="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-
-
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="logo/city-vibe-logo.png" alt="City Vibe Logo" width="300" />
-  </a>
-
-<h3 align="center">project_title</h3>
-
-  <p align="center">
-    project_description
-    <br />
-    <a href="https://github.com/mahtabb90/city-analysis"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/mahtabb90/city-analysis">View Demo</a>
-    &middot;
-    <a href="https://github.com/mahtabb90/city-analysis/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    &middot;
-    <a href="https://github.com/mahtabb90/city-analysis/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
-  </p>
-</div>
-
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+🌆 City Vibe Analyzer
 
+City Vibe Analyzer is a Python-based CLI application that bridges the gap between objective weather data and subjective urban experience.
+Instead of only showing numbers such as temperature or congestion, the system analyzes and translates data into an understandable “city vibe” with visualizations and human-oriented recommendations.
 
+The project demonstrates how raw data can be collected, analyzed, stored, visualized, and presented in a user-friendly way through a complete automated pipeline.
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+✨ Project Idea
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+Weather applications often provide numbers without context.
+City Vibe Analyzer answers a different question:
 
-Here's a blank template to get started. To avoid retyping too much info, do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`, `project_license`
+How does a city actually feel today?
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+By combining:
 
+meteorological data (weather),
 
+simulated traffic data,
 
-### Built With
+rule-based analysis,
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+and human-readable recommendations,
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+the project helps users understand the atmosphere of a city, not just its statistics.
 
+🧠 Key Features
 
+Interactive CLI menu
 
-<!-- GETTING STARTED -->
-## Getting Started
+Automatic geocoding (city name → latitude/longitude)
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+Weather data fetched from Open-Meteo API
 
-### Prerequisites
+Traffic data via a local mock API (Flask)
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Rule-based analysis and city status classification
 
-### Installation
+SQLite database for persistence
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/github_username/repo_name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-5. Change git remote url to avoid accidental pushes to base project
-   ```sh
-   git remote set-url origin github_username/repo_name
-   git remote -v # confirm the changes
-   ```
+Data visualizations using matplotlib
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Human-friendly recommendations loaded from a JSON configuration
 
+Fully testable with pytest
 
+Clean project structure using src/ layout
 
-<!-- USAGE EXAMPLES -->
-## Usage
+🏗️ Project Structure
+city-analysis/
+├── src/
+│   └── city_vibe/
+│       ├── analysis/        # Metrics and rule-based analysis
+│       ├── clients/         # Weather, traffic, geocoding clients
+│       ├── presentation/    # CLI, plots, user interaction
+│       ├── storage/         # Database repository logic
+│       ├── database.py      # SQLite setup and helpers
+│       └── __main__.py      # CLI entrypoint
+├── tests/                   # Pytest test suite
+├── data/
+│   └── comments.json        # Recommendation text configuration
+├── reports/
+│   ├── plots/               # Generated charts (ignored by git)
+│   └── summary/             # Generated summaries (ignored by git)
+├── requirements.txt
+├── pyproject.toml
+└── README.md
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+🚀 How to Run the Project
+1️⃣ Create and activate a virtual environment
+python -m venv .venv
 
-_For more examples, please refer to the [Documentation](https://example.com)_
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Activate it:
 
+Windows (Git Bash):
 
+source .venv/Scripts/activate
 
-<!-- ROADMAP -->
-## Roadmap
+2️⃣ Install dependencies
+pip install -r requirements.txt
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+3️⃣ Install the project as a CLI tool
+pip install -e .
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+This creates the command:
 
+city-vibe
 
+4️⃣ Start the traffic mock API (separate terminal)
+PYTHONPATH=src python src/city_vibe/clients/traffic/mock_api.py
 
-<!-- CONTRIBUTING -->
-## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+The mock server runs at:
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+http://127.0.0.1:5001
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+5️⃣ Start the application
+city-vibe
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+🧭 CLI Menu Overview
+1) Sense the city (analyze current vibe)
+2) View latest vibe analysis (from DB)
+3) List saved cities (from DB)
+4) List recent runs (from DB)
+5) Re-generate plots (from DB data)
+6) Database info
+7) Exit
 
-### Top contributors:
+Menu explanation (non-technical)
 
-<a href="https://github.com/mahtabb90/city-analysis/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=mahtabb90/city-analysis" alt="Contributors" />
-</a>
+Sense the city: analyzes a city’s current atmosphere
 
+View latest analysis: shows the most recent stored result
 
+List saved cities: displays cities already analyzed
 
-<!-- LICENSE -->
-## License
+Recent runs: shows recent analysis history
 
-Distributed under the project_license. See `LICENSE.txt` for more information.
+Re-generate plots: recreates charts from stored data
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Database info: system and storage overview
 
+📊 Output
 
+Plots are saved in reports/plots/
 
-<!-- CONTACT -->
-## Contact
+Summaries are saved in reports/summary/
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Both folders contain generated files and are ignored by Git
 
-Project Link: [https://github.com/mahtabb90/city-analysis](https://github.com/mahtabb90/city-analysis)
+🧪 Testing
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+Run the full test suite with:
 
+PYTHONPATH=src pytest
 
 
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+Tests include:
 
-* []()
-* []()
-* []()
+analysis logic
 
-<!-- GROUP RULES -->
-## Rules to follow on start up.
+database operations
 
-First time start up:
-1. Create a venv = python -m venv venv
-2. Activate venv. 
-   Mac/Linux = source venv/bin/activate
-   Windows = venv\Scripts\activate
+geocoding client (mocked API calls)
 
-Every startup:
-1. Activate venv.
-2. Check Trello if there is anything to review.
-3. If there is nothing to review, choose a card and branch out if needed.
+repository layer
 
-When changes has been made and you are done:
-1. Git add . or Git add "map-name"
-2. Git commit -m "Message" (example "docs/yourmessage" if you have been working with a document).
-3. Git push
+🗄️ Data Persistence
 
+The application uses SQLite for local storage:
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+cities
 
+weather data
 
+traffic data
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
-<!-- Shields.io badges. You can a comprehensive list with many more badges at: https://github.com/inttter/md-badges -->
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com # city-analysis
-Python project for analyzing city data over time using public APIs, data analysis, and visualization.
+analysis results
+
+The database file is created automatically and is not version-controlled.
+
+🎓 Educational Purpose
+
+This project was developed as part of a software development course and demonstrates:
+
+Python project structuring
+
+API integration
+
+CLI design
+
+Data analysis
+
+Visualization
+
+Database usage
+
+Testing and debugging
+
+Version control best practices
+
+Separation of logic and content
+
+🌱 Future Improvements
+
+Replace mock traffic API with a real traffic data source
+
+Add argparse subcommands for full automation
+
+Extend recommendation logic with machine learning
+
+Support multiple languages in recommendations
+
+
+If you get a SQLite schema error (e.g. missing column), delete data/city_analysis.db and rerun the app.
+rm -f data/city_analysis.db
+
+
+“Eftersom SQLite inte uppdaterar tabeller automatiskt hanterar vi schemaändringar genom att återskapa databasen i utveckling, och strukturen kan enkelt utökas med migrations vid behov.”
